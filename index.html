@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial Black', Arial, sans-serif;
+            background: radial-gradient(circle at center, #6366f1, #3730a3, #1e1b4b);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .background-rays {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: conic-gradient(from 0deg at 50% 50%, 
+                transparent 0deg, 
+                rgba(255,255,255,0.1) 15deg, 
+                transparent 30deg,
+                rgba(255,255,255,0.1) 45deg, 
+                transparent 60deg,
+                rgba(255,255,255,0.1) 75deg, 
+                transparent 90deg,
+                rgba(255,255,255,0.1) 105deg, 
+                transparent 120deg,
+                rgba(255,255,255,0.1) 135deg, 
+                transparent 150deg,
+                rgba(255,255,255,0.1) 165deg, 
+                transparent 180deg,
+                rgba(255,255,255,0.1) 195deg, 
+                transparent 210deg,
+                rgba(255,255,255,0.1) 225deg, 
+                transparent 240deg,
+                rgba(255,255,255,0.1) 255deg, 
+                transparent 270deg,
+                rgba(255,255,255,0.1) 285deg, 
+                transparent 300deg,
+                rgba(255,255,255,0.1) 315deg, 
+                transparent 330deg,
+                rgba(255,255,255,0.1) 345deg, 
+                transparent 360deg);
+            animation: rotate 20s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .container {
+            text-align: center;
+            z-index: 2;
+            position: relative;
+            max-width: 600px;
+            padding: 40px 20px;
+        }
+
+        .character {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            border: 6px solid #000;
+            position: relative;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-15px); }
+            60% { transform: translateY(-10px); }
+        }
+
+        .character::before {
+            content: '😄';
+            font-size: 120px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: wink 3s ease-in-out infinite;
+        }
+
+        @keyframes wink {
+            0%, 90%, 100% { content: '😄'; }
+            95% { content: '😉'; }
+        }
+
+        .character::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.1); opacity: 0; }
+        }
+
+        .title {
+            font-size: 4rem;
+            font-weight: 900;
+            color: #fff;
+            text-shadow: 4px 4px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 4px 4px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 0 0 20px #fbbf24; }
+            to { text-shadow: 4px 4px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 0 0 40px #fbbf24, 0 0 60px #fbbf24; }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #e5e7eb;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 0px #000;
+            font-weight: bold;
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 25px;
+            border: 4px solid #000;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .social-btn:hover::before {
+            left: 100%;
+        }
+
+        .twitter-btn {
+            background: linear-gradient(135deg, #1da1f2, #0d8bd9);
+            color: white;
+            text-shadow: 1px 1px 0px #000;
+        }
+
+        .twitter-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(29, 161, 242, 0.4);
+        }
+
+        .pump-btn {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            text-shadow: 1px 1px 0px #000;
+        }
+
+        .pump-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.4);
+        }
+
+        .icon {
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .character {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .character::before {
+                font-size: 80px;
+            }
+            
+            .social-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .social-btn {
+                width: 250px;
+                justify-content: center;
+            }
+        }
+
+        .sparkles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            animation: sparkle 3s linear infinite;
+        }
+
+        @keyframes sparkle {
+            0% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0); }
+        }
+
+        .sparkle:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
+        .sparkle:nth-child(2) { top: 20%; left: 80%; animation-delay: 0.5s; }
+        .sparkle:nth-child(3) { top: 70%; left: 10%; animation-delay: 1s; }
+        .sparkle:nth-child(4) { top: 80%; left: 90%; animation-delay: 1.5s; }
+        .sparkle:nth-child(5) { top: 30%; left: 70%; animation-delay: 2s; }
+        .sparkle:nth-child(6) { top: 60%; left: 30%; animation-delay: 2.5s; }
+    </style>
+</head>
+<body>
+    <div class="background-rays"></div>
+    <div class="sparkles">
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+    </div>
+    
+    <div class="container">
+        <div class="character"></div>
+        
+        <h1 class="title">COMING SOON</h1>
+        <p class="subtitle">Something amazing is on the way!</p>
+        
+        <div class="social-buttons">
+            <a href="https://twitter.com" class="social-btn twitter-btn" target="_blank">
+                <span class="icon">🐦</span>
+                <span>Twitter</span>
+            </a>
+            <a href="https://pump.fun" class="social-btn pump-btn" target="_blank">
+                <span class="icon">🚀</span>
+                <span>Pump.fun</span>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
