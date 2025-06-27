@@ -1038,5 +1038,155 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Loading animation
+        let percentage = 0;
+        const percentageElement = document.getElementById('percentage');
+        
+        function updatePercentage() {
+            if (percentage <= 100) {
+                percentageElement.textContent = percentage + '%';
+                percentage += 1;
+                setTimeout(updatePercentage, 40); // 4 seconds total (100 * 40ms)
+            } else {
+                // Loading complete - transition to main site
+                setTimeout(() => {
+                    showMainSite();
+                }, 1000);
+            }
+        }
+        
+        function showMainSite() {
+            const loadingScreen = document.getElementById('loadingScreen');
+            const mainSite = document.getElementById('mainSite');
+            
+            // Hide loading screen
+            loadingScreen.style.opacity = '0';
+            loadingScreen.style.transform = 'scale(0.8)';
+            
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+                mainSite.style.display = 'flex';
+                document.body.style.overflow = 'auto';
+                
+                // Initialize main site functions
+                initCountdown();
+                initFollowerCounter();
+            }, 500);
+        }
+        
+        // Start percentage animation after initial delay
+        setTimeout(updatePercentage, 2500);
+        
+        // Add hover effects to loading characters
+        const characters = document.querySelectorAll('.character');
+        characters.forEach((char) => {
+            char.addEventListener('mouseenter', () => {
+                char.style.transform = 'translateY(-10px) scale(1.1)';
+                char.style.boxShadow = '0 0 30px rgba(251, 191, 36, 0.8)';
+            });
+            
+            char.addEventListener('mouseleave', () => {
+                char.style.transform = 'translateY(0) scale(1)';
+                char.style.boxShadow = '0 0 20px rgba(251, 191, 36, 0.6)';
+            });
+        });
+
+        // Main site functions
+        function initCountdown() {
+            let endTime;
+            const storedEndTime = localStorage.getItem('countdownEndTime');
+            if (storedEndTime) {
+                endTime = parseInt(storedEndTime);
+            } else {
+                endTime = new Date().getTime() + (5 * 60 * 60 * 1000);
+                localStorage.setItem('countdownEndTime', endTime.toString());
+            }
+            
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const timeLeft = endTime - now;
+                
+                if (timeLeft > 0) {
+                    const hours = Math.floor(timeLeft / (1000 * 60 * 60));
+                    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                    
+                    document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                    document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                    document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+                } else {
+                    document.getElementById('hours').textContent = '00';
+                    document.getElementById('minutes').textContent = '00';
+                    document.getElementById('seconds').textContent = '00';
+                    document.querySelector('.countdown-title').textContent = 'LAUNCHED!';
+                    localStorage.removeItem('countdownEndTime');
+                }
+            }
+            
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        }
+        
+        function initFollowerCounter() {
+            let followerCount = 12300;
+            const followerElement = document.getElementById('followerCount');
+            
+            function formatFollowerCount(count) {
+                if (count >= 1000000) {
+                    return (count / 1000000).toFixed(1) + 'M';
+                } else if (count >= 1000) {
+                    return (count / 1000).toFixed(1) + 'K';
+                }
+                return count.toString();
+            }
+            
+            function updateFollowers() {
+                const increment = Math.floor(Math.random() * 5) + 1;
+                followerCount += increment;
+                
+                followerElement.style.transform = 'scale(1.1)';
+                followerElement.style.color = '#fbbf24';
+                
+                setTimeout(() => {
+                    followerElement.textContent = formatFollowerCount(followerCount);
+                    followerElement.style.transform = 'scale(1)';
+                    followerElement.style.color = '#fff';
+                }, 200);
+                
+                const nextUpdate = Math.random() * 7000 + 5000;
+                setTimeout(updateFollowers, nextUpdate);
+            }
+            
+            setTimeout(updateFollowers, 2000);
+        }
+        
+        // FAQ functionality
+        function toggleFaq(index) {
+            const answer = document.getElementById(`faq-${index}`);
+            const question = answer.previousElementSibling;
+            
+            answer.classList.toggle('active');
+            question.classList.toggle('active');
+        }
+        
+        // Modal functionality
+        function openModal() {
+            document.getElementById('showModal').style.display = 'block';
+        }
+        
+        function closeModal() {
+            document.getElementById('showModal').style.display = 'none';
+        }
+        
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('showModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
