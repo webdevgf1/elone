@@ -374,6 +374,130 @@
             }
         }
 
+        .flying-stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .flying-star {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.9;
+        }
+
+        .flying-star.star1 {
+            background-image: url('https://cdn.prod.website-files.com/6740d85c4e3daeef29a89470/685ec65c3444db41e7d63e32_New%20Project%20-%202025-06-27T172644.042.png');
+        }
+
+        .flying-star.star2 {
+            background-image: url('https://cdn.prod.website-files.com/6740d85c4e3daeef29a89470/685ec65c48967ece5ddadb24_New%20Project%20-%202025-06-27T172658.730.png');
+        }
+
+        .flying-star:nth-child(1) {
+            animation: starfly1 12s linear infinite;
+            animation-delay: 0s;
+        }
+
+        .flying-star:nth-child(2) {
+            animation: starfly2 14s linear infinite;
+            animation-delay: 2s;
+        }
+
+        .flying-star:nth-child(3) {
+            animation: starfly3 10s linear infinite;
+            animation-delay: 4s;
+        }
+
+        .flying-star:nth-child(4) {
+            animation: starfly4 16s linear infinite;
+            animation-delay: 6s;
+        }
+
+        .flying-star:nth-child(5) {
+            animation: starfly5 13s linear infinite;
+            animation-delay: 8s;
+        }
+
+        .flying-star:nth-child(6) {
+            animation: starfly6 11s linear infinite;
+            animation-delay: 10s;
+        }
+
+        .flying-star:nth-child(7) {
+            animation: starfly7 15s linear infinite;
+            animation-delay: 1s;
+        }
+
+        .flying-star:nth-child(8) {
+            animation: starfly8 9s linear infinite;
+            animation-delay: 3s;
+        }
+
+        @keyframes starfly1 {
+            0% { left: -50px; top: 10%; transform: rotate(0deg) scale(0.5); }
+            50% { left: 50%; top: 80%; transform: rotate(180deg) scale(1.2); }
+            100% { left: calc(100% + 50px); top: 30%; transform: rotate(360deg) scale(0.8); }
+        }
+
+        @keyframes starfly2 {
+            0% { left: calc(100% + 50px); top: 60%; transform: rotate(0deg) scale(0.7); }
+            30% { left: 70%; top: 20%; transform: rotate(-108deg) scale(1.1); }
+            70% { left: 30%; top: 90%; transform: rotate(-252deg) scale(0.6); }
+            100% { left: -50px; top: 40%; transform: rotate(-360deg) scale(0.9); }
+        }
+
+        @keyframes starfly3 {
+            0% { left: 20%; top: -50px; transform: rotate(0deg) scale(0.8); }
+            40% { left: 80%; top: 50%; transform: rotate(144deg) scale(1.3); }
+            80% { left: 10%; top: 70%; transform: rotate(288deg) scale(0.5); }
+            100% { left: 60%; top: calc(100% + 50px); transform: rotate(360deg) scale(1); }
+        }
+
+        @keyframes starfly4 {
+            0% { left: 80%; top: calc(100% + 50px); transform: rotate(0deg) scale(0.6); }
+            25% { left: 20%; top: 80%; transform: rotate(90deg) scale(1.1); }
+            50% { left: 90%; top: 30%; transform: rotate(180deg) scale(0.9); }
+            75% { left: 40%; top: 10%; transform: rotate(270deg) scale(1.2); }
+            100% { left: 70%; top: -50px; transform: rotate(360deg) scale(0.7); }
+        }
+
+        @keyframes starfly5 {
+            0% { left: -50px; top: 85%; transform: rotate(0deg) scale(1); }
+            35% { left: 60%; top: 25%; transform: rotate(126deg) scale(0.4); }
+            65% { left: 85%; top: 75%; transform: rotate(234deg) scale(1.4); }
+            100% { left: calc(100% + 50px); top: 15%; transform: rotate(360deg) scale(0.8); }
+        }
+
+        @keyframes starfly6 {
+            0% { left: 45%; top: -50px; transform: rotate(0deg) scale(0.9); }
+            33% { left: 15%; top: 40%; transform: rotate(-120deg) scale(1.2); }
+            66% { left: 75%; top: 85%; transform: rotate(-240deg) scale(0.6); }
+            100% { left: 35%; top: calc(100% + 50px); transform: rotate(-360deg) scale(1.1); }
+        }
+
+        @keyframes starfly7 {
+            0% { left: calc(100% + 50px); top: 25%; transform: rotate(0deg) scale(0.7); }
+            50% { left: 25%; top: 60%; transform: rotate(180deg) scale(1.3); }
+            100% { left: -50px; top: 80%; transform: rotate(360deg) scale(0.5); }
+        }
+
+        @keyframes starfly8 {
+            0% { left: 65%; top: calc(100% + 50px); transform: rotate(0deg) scale(1.1); }
+            40% { left: 90%; top: 45%; transform: rotate(-144deg) scale(0.8); }
+            80% { left: 15%; top: 15%; transform: rotate(-288deg) scale(1.5); }
+            100% { left: 55%; top: -50px; transform: rotate(-360deg) scale(0.9); }
+        }
+
         .sparkles {
             position: absolute;
             width: 100%;
@@ -439,23 +563,18 @@
 
         .flying-char:nth-child(3) {
             animation: fly3 20s linear infinite;
-            animation-delay: 6s;
+            animation-delay: 8s;
         }
 
         .flying-char:nth-child(4) {
             animation: fly4 16s linear infinite;
-            animation-delay: 9s;
-            transform: scaleX(-1);
-        }
-
-        .flying-char:nth-child(5) {
-            animation: fly5 22s linear infinite;
             animation-delay: 12s;
+            transform: scaleX(-1);
         }
 
         @keyframes fly1 {
             0% { 
-                left: -80px; 
+                left: -120px; 
                 top: 20%; 
                 transform: rotate(0deg) scale(0.8);
             }
@@ -475,7 +594,7 @@
                 transform: rotate(270deg) scale(1.1);
             }
             100% { 
-                left: calc(100% + 80px); 
+                left: calc(100% + 120px); 
                 top: 50%; 
                 transform: rotate(360deg) scale(0.8);
             }
@@ -483,7 +602,7 @@
 
         @keyframes fly2 {
             0% { 
-                left: calc(100% + 80px); 
+                left: calc(100% + 120px); 
                 top: 70%; 
                 transform: scaleX(-1) rotate(0deg) scale(1);
             }
@@ -498,7 +617,7 @@
                 transform: scaleX(-1) rotate(-240deg) scale(1.3);
             }
             100% { 
-                left: -80px; 
+                left: -120px; 
                 top: 40%; 
                 transform: scaleX(-1) rotate(-360deg) scale(1);
             }
@@ -507,7 +626,7 @@
         @keyframes fly3 {
             0% { 
                 left: 50%; 
-                top: -80px; 
+                top: -120px; 
                 transform: rotate(0deg) scale(0.9);
             }
             20% { 
@@ -532,14 +651,14 @@
             }
             100% { 
                 left: 50%; 
-                top: calc(100% + 80px); 
+                top: calc(100% + 120px); 
                 transform: rotate(360deg) scale(0.9);
             }
         }
 
         @keyframes fly4 {
             0% { 
-                left: -80px; 
+                left: -120px; 
                 top: 80%; 
                 transform: scaleX(-1) rotate(0deg) scale(1.1);
             }
@@ -554,37 +673,9 @@
                 transform: scaleX(-1) rotate(240deg) scale(1.3);
             }
             100% { 
-                left: calc(100% + 80px); 
+                left: calc(100% + 120px); 
                 top: 15%; 
                 transform: scaleX(-1) rotate(360deg) scale(1.1);
-            }
-        }
-
-        @keyframes fly5 {
-            0% { 
-                left: 25%; 
-                top: calc(100% + 80px); 
-                transform: rotate(0deg) scale(0.7);
-            }
-            25% { 
-                left: 80%; 
-                top: 80%; 
-                transform: rotate(90deg) scale(1.2);
-            }
-            50% { 
-                left: 90%; 
-                top: 35%; 
-                transform: rotate(180deg) scale(0.9);
-            }
-            75% { 
-                left: 15%; 
-                top: 20%; 
-                transform: rotate(270deg) scale(1.1);
-            }
-            100% { 
-                left: 25%; 
-                top: -80px; 
-                transform: rotate(360deg) scale(0.7);
             }
         }
 
@@ -780,11 +871,10 @@
 <body>
     <div class="background-rays"></div>
     <div class="flying-characters">
-        <div class="flying-char"></div>
-        <div class="flying-char"></div>
-        <div class="flying-char"></div>
-        <div class="flying-char"></div>
-        <div class="flying-char"></div>
+        <div class="flying-char char1"></div>
+        <div class="flying-char char2"></div>
+        <div class="flying-char char1"></div>
+        <div class="flying-char char2"></div>
     </div>
     <div class="sparkles">
         <div class="sparkle"></div>
