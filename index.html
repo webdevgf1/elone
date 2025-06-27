@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coming Soon - Mars Mission</title>
+    <link rel="icon" type="image/png" href="https://cdn.prod.website-files.com/6740d85c4e3daeef29a89470/685ecffaf15dfd903005a425_New%20Project%20-%202025-06-27T180453.039.png">
     <style>
         * {
             margin: 0;
@@ -550,6 +551,23 @@
             box-shadow: 0 10px 20px rgba(16, 185, 129, 0.4);
         }
 
+        .watch-btn {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            text-shadow: 1px 1px 0px #000;
+            border: none;
+            cursor: pointer;
+        }
+
+        .watch-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        .watch-btn span:first-child {
+            font-size: 1.5rem;
+        }
+
         .icon {
             width: 24px;
             height: 24px;
@@ -838,6 +856,38 @@
             text-shadow: 2px 2px 0px #000;
         }
 
+        .video-modal-content {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            margin: 3% auto;
+            padding: 0;
+            border: 6px solid #fbbf24;
+            border-radius: 25px;
+            width: 90%;
+            max-width: 800px;
+            position: relative;
+            animation: slideIn 0.3s ease;
+            box-shadow: 0 15px 0 #f59e0b;
+        }
+
+        .video-modal-header {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            padding: 20px;
+            border-bottom: 4px solid #000;
+            border-radius: 19px 19px 0 0;
+            position: relative;
+        }
+
+        .video-modal-body {
+            padding: 20px;
+            background: #000;
+            border-radius: 0 0 19px 19px;
+        }
+
+        .video-modal-body video {
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .loading-text {
@@ -987,6 +1037,10 @@
                     <img src="https://cdn.prod.website-files.com/6740d85c4e3daeef29a89470/67e09302ce2c79cb6daaebcc_Pump_fun_logo%20(2).png" alt="Pump.fun" class="icon">
                     <span>Pump.fun</span>
                 </a>
+                <button onclick="openVideoModal()" class="social-btn watch-btn">
+                    <span>▶</span>
+                    <span>Watch</span>
+                </button>
             </div>
 
             <div class="followers-container">
@@ -1056,6 +1110,22 @@
                         <p>This isn't just another news show - it's a <span class="highlight">comedic battlefield</span> where sacred cows get roasted and conventional wisdom gets challenged daily.</p>
                         
                         <p>Buckle up for journalism with attitude!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Modal -->
+            <div id="videoModal" class="modal">
+                <div class="video-modal-content">
+                    <div class="video-modal-header">
+                        <h2 class="modal-title">Watch Preview</h2>
+                        <span class="close" onclick="closeVideoModal()">&times;</span>
+                    </div>
+                    <div class="video-modal-body">
+                        <video id="modalVideo" controls width="100%" height="auto">
+                            <source src="https://res.cloudinary.com/dk4bbapud/video/upload/v1751044137/Untitled_video_-_Made_with_Clipchamp_47_hdpnd0.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
                     </div>
                 </div>
             </div>
@@ -1202,12 +1272,29 @@
         function closeModal() {
             document.getElementById('showModal').style.display = 'none';
         }
+
+        // Video Modal functionality
+        function openVideoModal() {
+            document.getElementById('videoModal').style.display = 'block';
+        }
+        
+        function closeVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('modalVideo');
+            modal.style.display = 'none';
+            video.pause(); // Pause video when closing modal
+            video.currentTime = 0; // Reset video to beginning
+        }
         
         // Close modal when clicking outside of it
         window.onclick = function(event) {
             const modal = document.getElementById('showModal');
+            const videoModal = document.getElementById('videoModal');
             if (event.target === modal) {
                 modal.style.display = 'none';
+            }
+            if (event.target === videoModal) {
+                closeVideoModal();
             }
         }
     </script>
