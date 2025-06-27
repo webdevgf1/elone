@@ -437,8 +437,6 @@
             margin: 0 auto 15px;
             display: block;
             border-radius: 10px;
-            border: 3px solid #000;
-            box-shadow: 0 4px 0 #000;
         }
 
         .countdown-title {
@@ -624,17 +622,19 @@
 
         .sparkle {
             position: absolute;
-            width: 4px;
-            height: 4px;
-            background: white;
-            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            background-image: url('https://cdn.prod.website-files.com/6740d85c4e3daeef29a89470/685ec65c48967ece5ddadb24_New%20Project%20-%202025-06-27T172658.730.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
             animation: sparkle 3s linear infinite;
         }
 
         @keyframes sparkle {
-            0% { opacity: 0; transform: scale(0); }
-            50% { opacity: 1; transform: scale(1); }
-            100% { opacity: 0; transform: scale(0); }
+            0% { opacity: 0; transform: scale(0) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1) rotate(180deg); }
+            100% { opacity: 0; transform: scale(0) rotate(360deg); }
         }
 
         .sparkle:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
@@ -643,6 +643,12 @@
         .sparkle:nth-child(4) { top: 80%; left: 90%; animation-delay: 1.5s; }
         .sparkle:nth-child(5) { top: 30%; left: 70%; animation-delay: 2s; }
         .sparkle:nth-child(6) { top: 60%; left: 30%; animation-delay: 2.5s; }
+        .sparkle:nth-child(7) { top: 15%; left: 50%; animation-delay: 0.3s; }
+        .sparkle:nth-child(8) { top: 45%; left: 15%; animation-delay: 1.2s; }
+        .sparkle:nth-child(9) { top: 75%; left: 60%; animation-delay: 1.8s; }
+        .sparkle:nth-child(10) { top: 35%; left: 90%; animation-delay: 0.8s; }
+        .sparkle:nth-child(11) { top: 55%; left: 75%; animation-delay: 2.2s; }
+        .sparkle:nth-child(12) { top: 25%; left: 40%; animation-delay: 1.4s; }
 
         .faq-section {
             margin: 40px 0;
@@ -933,6 +939,12 @@
     <div class="main-site" id="mainSite" style="display: none;">
         <div class="background-rays"></div>
         <div class="sparkles">
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
             <div class="sparkle"></div>
             <div class="sparkle"></div>
             <div class="sparkle"></div>
