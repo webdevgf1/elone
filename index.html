@@ -726,8 +726,18 @@
     </div>
 
     <script>
-        // Countdown Timer
-        const endTime = new Date().getTime() + (5 * 60 * 60 * 1000); // 5 hours from now
+        // Countdown Timer with persistence
+        let endTime;
+        
+        // Check if we already have an end time stored
+        const storedEndTime = localStorage.getItem('countdownEndTime');
+        if (storedEndTime) {
+            endTime = parseInt(storedEndTime);
+        } else {
+            // First visit - set end time to 5 hours from now
+            endTime = new Date().getTime() + (5 * 60 * 60 * 1000);
+            localStorage.setItem('countdownEndTime', endTime.toString());
+        }
         
         function updateCountdown() {
             const now = new Date().getTime();
@@ -748,6 +758,9 @@
                 
                 // Optional: Show launch message
                 document.querySelector('.countdown-title').textContent = 'LAUNCHED!';
+                
+                // Optional: Clear the stored end time after launch
+                localStorage.removeItem('countdownEndTime');
             }
         }
         
