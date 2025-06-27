@@ -89,18 +89,17 @@
         }
 
         .character::before {
-            content: '😄';
-            font-size: 120px;
+            content: '';
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            animation: wink 3s ease-in-out infinite;
-        }
-
-        @keyframes wink {
-            0%, 90%, 100% { content: '😄'; }
-            95% { content: '😉'; }
+            width: 160px;
+            height: 160px;
+            background-image: url('https://cdn.prod.website-files.com/6740d85c4e3daeef29a89470/685ec00138ef87855942ab67_ChatGPT_Image_Jun_27__2025__04_58_51_PM-removebg-preview.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
         }
 
         .character::after {
@@ -417,6 +416,194 @@
         .sparkle:nth-child(4) { top: 80%; left: 90%; animation-delay: 1.5s; }
         .sparkle:nth-child(5) { top: 30%; left: 70%; animation-delay: 2s; }
         .sparkle:nth-child(6) { top: 60%; left: 30%; animation-delay: 2.5s; }
+
+        .faq-section {
+            margin: 40px 0;
+            padding: 25px;
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            border: 4px solid #000;
+            border-radius: 20px;
+            box-shadow: 0 8px 0 #5b21b6;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .faq-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shine 5s linear infinite;
+        }
+
+        .faq-title {
+            font-size: 1.8rem;
+            color: #fff;
+            text-shadow: 3px 3px 0px #000;
+            margin-bottom: 20px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        .faq-item {
+            background: #000;
+            border: 3px solid #fff;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question {
+            padding: 20px;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: #000;
+            font-weight: 900;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-shadow: 1px 1px 0px #fff;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .faq-question:hover {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            transform: translateY(-2px);
+        }
+
+        .faq-question::after {
+            content: '+';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            font-weight: 900;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active::after {
+            transform: translateY(-50%) rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            background: #000;
+            color: #fff;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            line-height: 1.6;
+        }
+
+        .faq-answer.active {
+            padding: 20px;
+            max-height: 200px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            margin: 5% auto;
+            padding: 0;
+            border: 6px solid #000;
+            border-radius: 25px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            animation: slideIn 0.3s ease;
+            box-shadow: 0 15px 0 #7f1d1d;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            padding: 25px;
+            border-bottom: 4px solid #000;
+            border-radius: 19px 19px 0 0;
+            position: relative;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #000;
+            text-shadow: 2px 2px 0px #fff;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0;
+        }
+
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #000;
+            font-size: 2.5rem;
+            font-weight: 900;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid #000;
+        }
+
+        .close:hover {
+            background: #fee2e2;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .modal-body {
+            padding: 30px;
+            color: #fff;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            font-weight: bold;
+            text-shadow: 1px 1px 0px #000;
+        }
+
+        .modal-body p {
+            margin-bottom: 20px;
+        }
+
+        .modal-body .highlight {
+            color: #fbbf24;
+            font-weight: 900;
+            text-shadow: 2px 2px 0px #000;
+        }
     </style>
 </head>
 <body>
@@ -437,7 +624,7 @@
         <p class="subtitle">The show is about to begin!</p>
         
         <div class="countdown-container">
-            <div class="countdown-title">🚀 Launch Countdown 🚀</div>
+            <div class="countdown-title">LAUNCH COUNTDOWN</div>
             <div class="countdown-timer">
                 <div class="time-unit">
                     <span class="time-number" id="hours">05</span>
@@ -463,8 +650,73 @@
             <div class="followers-label">and counting...</div>
         </div>
         
-        <div class="social-buttons">
+        <div class="faq-section">
+            <h2 class="faq-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(0)">
+                    What exactly is this show?
+                </div>
+                <div class="faq-answer" id="faq-0">
+                    A satirical daily commentary show featuring current world affairs, tech industry drama, and social media chaos - all delivered with sharp wit and bold takes on the news that matters.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="openModal()">
+                    Tell me more about the format
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(2)">
+                    When will episodes air?
+                </div>
+                <div class="faq-answer" id="faq-2">
+                    Daily episodes will be released Monday through Friday, with special weekend editions covering major breaking news and exclusive deep-dive segments.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(3)">
+                    Where can I watch?
+                </div>
+                <div class="faq-answer" id="faq-3">
+                    The show will be available on multiple platforms including our website, YouTube, podcast feeds, and select streaming services. Full details coming soon!
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div id="showModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">About The Show</h2>
+                    <span class="close" onclick="closeModal()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <p>Welcome to the most <span class="highlight">audacious satirical news show</span> on the internet!</p>
+                    
+                    <p>Our daily program delivers <span class="highlight">razor-sharp commentary</span> on current world affairs, breaking down complex global events through the lens of humor, skepticism, and unfiltered analysis.</p>
+                    
+                    <p>Each episode features:</p>
+                    <p>• <span class="highlight">Rapid-fire news analysis</span> covering politics, technology, and culture<br>
+                    • <span class="highlight">Guest interviews</span> with newsmakers, whistleblowers, and industry insiders<br>
+                    • <span class="highlight">Satirical segments</span> that expose the absurdity in today's headlines<br>
+                    • <span class="highlight">Interactive audience engagement</span> via social media integration</p>
+                    
+                    <p>This isn't just another news show - it's a <span class="highlight">comedic battlefield</span> where sacred cows get roasted and conventional wisdom gets challenged daily.</p>
+                    
+                    <p>Buckle up for journalism with attitude!</p>
+                </div>
+            </div>
+        </div>
             <a href="https://twitter.com" class="social-btn twitter-btn" target="_blank">
+                <img src="https://cdn.prod.website-files.com/6740d85c4e3daeef29a89470/6838de5fb56905c169669b27_61w1Q5OxE2L%20(1).png" alt="X/Twitter" class="icon">
+                <span>X/Twitter</span>
+            </a>
+        <div class="social-buttons">
+            <a href="https://twitter.com/elon" class="social-btn twitter-btn" target="_blank">
                 <img src="https://cdn.prod.website-files.com/6740d85c4e3daeef29a89470/6838de5fb56905c169669b27_61w1Q5OxE2L%20(1).png" alt="X/Twitter" class="icon">
                 <span>X/Twitter</span>
             </a>
@@ -497,7 +749,7 @@
                 document.getElementById('seconds').textContent = '00';
                 
                 // Optional: Show launch message
-                document.querySelector('.countdown-title').textContent = '🎉 LAUNCHED! 🎉';
+                document.querySelector('.countdown-title').textContent = 'LAUNCHED!';
             }
         }
         
@@ -540,6 +792,32 @@
         
         // Start follower updates after initial load
         setTimeout(updateFollowers, 2000);
+        
+        // FAQ functionality
+        function toggleFaq(index) {
+            const answer = document.getElementById(`faq-${index}`);
+            const question = answer.previousElementSibling;
+            
+            answer.classList.toggle('active');
+            question.classList.toggle('active');
+        }
+        
+        // Modal functionality
+        function openModal() {
+            document.getElementById('showModal').style.display = 'block';
+        }
+        
+        function closeModal() {
+            document.getElementById('showModal').style.display = 'none';
+        }
+        
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('showModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
     </script>
 </body>
 </html>
