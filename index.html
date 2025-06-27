@@ -1047,13 +1047,13 @@
         function updatePercentage() {
             if (percentage <= 100) {
                 percentageElement.textContent = percentage + '%';
-                percentage += 1;
-                setTimeout(updatePercentage, 40); // 4 seconds total (100 * 40ms)
+                percentage += 2;
+                setTimeout(updatePercentage, 20); // 2 seconds total (100 * 20ms / 2)
             } else {
                 // Loading complete - transition to main site
                 setTimeout(() => {
                     showMainSite();
-                }, 1000);
+                }, 200);
             }
         }
         
@@ -1073,11 +1073,11 @@
                 // Initialize main site functions
                 initCountdown();
                 initFollowerCounter();
-            }, 500);
+            }, 300);
         }
         
-        // Start percentage animation after initial delay
-        setTimeout(updatePercentage, 2500);
+        // Start percentage animation immediately after page load
+        setTimeout(updatePercentage, 500);
         
         // Add hover effects to loading characters
         const characters = document.querySelectorAll('.character');
